@@ -1,13 +1,13 @@
 #!/bin/bash
-# Startup script for the PiClock
+# Startup script for the RoseWeather
 #
-# Designed to be started from PiClock.desktop (autostart)
+# Designed to be started from RoseWeather.desktop (autostart)
 #
 # or alternatively from crontab as follows
-#@reboot sh /home/pi/PiClock/startup.sh
+#@reboot sh /home/pi/RoseWeather/startup.sh
 
 #
-cd $HOME/PiClock
+cd $HOME/RoseWeather
 
 #
 if [ "$DISPLAY" = "" ]
@@ -34,8 +34,8 @@ fi
 if [ "$1" = "-m" -o "$1" = "--message-delay" ]
 then
 	MSG="echo Waiting $2 seconds for response before starting"
-	#DELAY="xmessage -buttons Now:0,Cancel:1 -default Now -timeout $2 Starting PiClock in $2 seconds"
-	DELAY='zenity --question --title PiClock --ok-label=Now --cancel-label=Cancel --timeout '$2' --text "Starting PiClock in '$2' seconds" >/dev/null 2>&1'
+	#DELAY="xmessage -buttons Now:0,Cancel:1 -default Now -timeout $2 Starting RoseWeather in $2 seconds"
+	DELAY='zenity --question --title RoseWeather --ok-label=Now --cancel-label=Cancel --timeout '$2' --text "Starting RoseWeather in '$2' seconds" >/dev/null 2>&1'
 	shift
 	shift
 fi
@@ -45,12 +45,12 @@ eval $DELAY
 if [ $? -eq 1 ]
 then
 
-	echo "PiClock Cancelled"
+	echo "RoseWeather Cancelled"
 	exit 0
 fi
 
-#xmessage -timeout 5 Starting PiClock....... &
-zenity --info --timeout 3 --text "Starting PiClock......." >/dev/null 2>&1 &
+#xmessage -timeout 5 Starting RoseWeather....... &
+zenity --info --timeout 3 --text "Starting RoseWeather......." >/dev/null 2>&1 &
 
 # stop screen blanking
 echo "Disabling screen blanking...."
@@ -69,53 +69,12 @@ echo "Setting sound to max (assuming Monitor Tv controls volume)...."
 # push sound level to maximum
 amixer cset numid=1 -- 400 >/dev/null 2>&1
 
-# NeoPixel AmbiLights
-echo "Checking for NeoPixels Ambilight..."
-cd Leds
-python -c "import NeoPixel" >/dev/null 2>&1
-if [ $? -eq 0 ]
-then
-	pgrep -f NeoAmbi.py
-	if [ $? -eq 1 ]
-	then
-		echo "Starting NeoPixel Ambilight Service..."
-		sudo python NeoAmbi.py &
-	fi
-fi
-cd ..
-
-echo "Checking for GPIO Buttons..."
-# gpio button to keyboard input
-if [ -x Button/gpio-keys ]
-then
-	pgrep -f gpio-keys
-	if [ $? -eq 1 ]
-	then
-		echo "Starting gpio-keys Service..."
-		sudo Button/gpio-keys 23:KEY_SPACE 24:KEY_F2 25:KEY_UP &
-	fi
-fi
-
-echo "Checking for Temperature Sensors..."
-# for temperature sensor(s) on One Wire bus
-python -c "import w1thermsensor" >/dev/null 2>&1
-if [ $? -eq 0 ]
-	then
-	pgrep -f TempServer.py
-	if [ $? -eq 1 ]
-	then
-		echo "Starting Temperature Service..."
-		cd Temperature
-		python TempServer.py &
-		cd ..
-	fi
-fi
 
 # the main app
 cd Display
 if [ "$1" = "-s" -o "$1" = "--screen-log" ]
 then
-  echo "Starting PiClock.... logging to screen."
+  echo "Starting RoseWeather.... logging to screen."
   python -u RoseWeather.py
 else
   # create a new log file name, max of 7 log files
@@ -127,6 +86,6 @@ else
   mv RoseWeather.3.log RoseWeather.4.log >/dev/null 2>&1
   mv RoseWeather.2.log RoseWeather.3.log >/dev/null 2>&1
   mv RoseWeather.1.log RoseWeather.2.log >/dev/null 2>&1
-  echo "Starting PiClock.... logging to Clock/RoseWeather.1.log "
+  echo "Starting RoseWeather.... logging to Clock/RoseWeather.1.log "
   python -u RoseWeather.py >RoseWeather.1.log 2>&1
 fi
