@@ -18,6 +18,11 @@ class Window(QWidget):
         view.setHtml(html)
         #self.close()
 
+        def keyPressEvent(self, event):
+            if isinstance(event, QtGui.QKeyEvent):
+                # print event.key(), format(event.key(), '08x')
+                if event.key() == Qt.Key_F4:
+                    self.close()
 
 def main(url):
     app = QApplication(sys.argv)
