@@ -3,8 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Rose Weather Display</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
+    <script>
+        $(document).ready(function () {
+            console.log('Document Ready');
+
+            window.setTimeout(function () {
+                $('#changeOnDelay').text('Hello WORLD!!!!!!');
+            }, 1000);
+        });
+    </script>
     <h1>This will be the Rose Weather Display</h1>
+    <h2 id="changeOnDelay">This should change</h2>
 </body>
 </html>
