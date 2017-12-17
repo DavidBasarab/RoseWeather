@@ -33,4 +33,14 @@ div {
 .topRow {
     font-size: 3.5vw;
     width: 99%;
+    text-align: center;
+    vertical-align: center;
+}
+
+#currentTemp {
+    font-size: 5vw;
+}
+
+#currentRainPercent {
+    font-size: 3vw;
 }
