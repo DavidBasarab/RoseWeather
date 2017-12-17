@@ -37,6 +37,12 @@ div {
     vertical-align: center;
 }
 
+label {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
+}
+
 #currentTemp {
     font-size: 5vw;
 }
