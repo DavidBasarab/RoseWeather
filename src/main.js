@@ -18,17 +18,23 @@ $(document).ready(function () {
         });
     }
 
-    getWeatherData().done(function (result) {
-        console.log('got weather data');
+    function refreshWeatherData() {
+        getWeatherData().done(function (result) {
+            console.log('got weather data');
 
-        $('#currentTemp').text(result.current_observation.temp_f);
+            $('#currentTemp').text(result.current_observation.temp_f);
 
-        $('#currentConditions').text(result.current_observation.weather);
+            $('#currentConditions').text(result.current_observation.weather);
 
-        $('#currentConditionsIcon').attr('src', result.current_observation.icon_url);
+            $('#currentConditionsIcon').attr('src', result.current_observation.icon_url);
 
-    }).fail(function (result) {
-        console.log('Error: ' + result.responseText);
-    });
+            window.setTimeout(refreshWeatherData, 60000);
+
+        }).fail(function (result) {
+            console.log('Error: ' + result.responseText);
+        });
+    }
+
+    refreshWeatherData();
 
 });
