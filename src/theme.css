@@ -29,3 +29,8 @@ div {
     height: 100%;
     margin: 0;
 }
+
+.topRow {
+    font-size: 35px;
+    width: 99%;
+}
