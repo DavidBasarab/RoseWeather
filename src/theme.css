@@ -46,6 +46,10 @@ label {
     font-size: 5vw;
 }
 
+#conditions {
+    font-size: 3vw;
+}
+
 #currentRainPercent {
     font-size: 3vw;
 }
