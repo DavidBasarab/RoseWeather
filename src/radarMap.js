@@ -10,7 +10,7 @@ function GetMap() {
     map = new Microsoft.Maps.Map('#myMap', {
         credentials: 'AukiFJufqy5nuE7sRh7ojpSz5EpL2zEHIHiFJryHdayJeiVDJ-x3DescRvsqLVDe',
         center: new Microsoft.Maps.Location(33.365736, -84.432969),
-        zoom: 4,
+        zoom: 10,
         showZoomButtons: false,
         showLocateMeButton: false,
         showMapTypeSelector: false
