@@ -1,8 +1,26 @@
-.img-container { position: relative; }
+html, body, #outer {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
 
-.img-container .top {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1;
+#outer {
+    display: table;
+}
+
+#inner_fixed {
+    height: 50px;
+    background-color: grey;
+
+    display: table-row;
+}
+
+#inner_remaining {
+    background-color: #DDDDDD;
+    display: table-row;
+}
+
+.fill {
+    min-height: 100%;
+    height: 100%;
 }

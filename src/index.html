@@ -4,43 +4,28 @@
     <meta charset="UTF-8">
     <title>Rose Weather Display</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script type='text/javascript' src='http://www.bing.com/api/maps/mapcontrol?callback=GetMap' async defer></script>
     <link rel="stylesheet" type="text/css" href="theme.css">
     <script src="radarMap.js"></script>
     <script src="main.js"></script>
 </head>
 <body>
-    <script>
-        $(document).ready(function () {
-
-            function testItem() {
-                var flickerAPI = "http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
-                $.getJSON(flickerAPI, {
-                    tags: "mount rainier",
-                    tagmode: "any",
-                    format: "json"
-                })
-                    .done(function (data) {
-                        $('#testing').text(JSON.stringify(data));
-                    });
-            }
-
-            console.log('Document Ready');
-
-            $('#mapImage').attr('src', googleMapImageUrl);
-            $('#radarImage').attr('src', radarImageUrl);
-
-            window.setTimeout(function () {
-                $('#changeOnDelay').text('Hello WORLD!!!!!!');
-                //testItem();
-            }, 1000);
-        });
-
-
-    </script>
-    <h1>This will be the Rose Weather Display with Apache2 No Python</h1>
-    <h2 id="changeOnDelay">This should change again</h2>
-    <div id="testing"></div>
-    <div id="myMap" style="position:relative;width:600px;height:400px;"></div>
+    <div id="outer">
+        <div id="inner_fixed">
+            I have a fixed height
+        </div>
+        <div id="inner_remaining">
+            <div class="row fill">
+                <div class="col-xs-6 fill" style="background-color: greenyellow">
+                    RADAR
+                </div>
+                <div class="col-xs-6 fill" style="background-color: hotpink">
+                    HOURLY
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
