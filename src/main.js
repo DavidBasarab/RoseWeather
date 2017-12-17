@@ -28,6 +28,13 @@ $(document).ready(function () {
 
             $('#currentConditionsIcon').attr('src', result.current_observation.icon_url);
 
+            // Need to find RAIN % for current hour
+            var currentHour = result.hourly_forecast[0];
+
+            $('#rainPercent').text(currentHour.pop);
+
+            console.log(JSON.stringify(currentHour));
+
             window.setTimeout(refreshWeatherData, 60000);
 
         }).fail(function (result) {
