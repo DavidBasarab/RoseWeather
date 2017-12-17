@@ -13,7 +13,7 @@ div {
 }
 
 #inner_fixed {
-    height: 50px;
+    height: 75px;
     background-color: grey;
 
     display: table-row;
@@ -31,6 +31,6 @@ div {
 }
 
 .topRow {
-    font-size: 35px;
+    font-size: 60px;
     width: 99%;
 }
