@@ -28,7 +28,23 @@ $(document).ready(function () {
 
             $('#currentConditions').text(result.current_observation.weather);
 
-            $('#currentConditionsIcon').attr('src', 'https://icons.wxug.com/i/c/g/' + result.current_observation.icon + '.gif');
+
+            //http://icons.wxug.com/i/c/v4/clear.svg
+            var showNight = result.current_observation.icon_url.includes("nt_");
+
+            var finalUrlIcon  = 'https://icons.wxug.com/i/c/v3/';
+
+            if(showNight) {
+                finalUrlIcon = finalUrlIcon + 'nt_';
+            }
+
+            finalUrlIcon = finalUrlIcon + result.current_observation.icon + '.svg';
+
+            //http://icons.wxug.com/i/c/v3/nt_partlycloudy.svg
+
+            console.log('Icon Url := ' + finalUrlIcon);
+
+            $('#currentConditionsIcon').attr('src', finalUrlIcon);
 
             // Need to find RAIN % for current hour
             var currentHour = result.hourly_forecast[0];
