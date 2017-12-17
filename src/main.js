@@ -33,7 +33,7 @@ $(document).ready(function () {
 
             $('#rainPercent').text(currentHour.pop);
 
-            window.setTimeout(refreshWeatherData, 60000);
+            window.setTimeout(refreshWeatherData, 600000);
 
         }).fail(function (result) {
             console.log('Error: ' + result.responseText);
