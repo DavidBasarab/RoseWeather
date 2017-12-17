@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <title>Rose Weather Display</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="theme.css">
+    <script src="main.js"></script>
 </head>
 <body>
     <script>
@@ -23,9 +25,12 @@
 
             console.log('Document Ready');
 
+            $('#mapImage').attr('src', googleMapImageUrl);
+            $('#radarImage').attr('src', radarImageUrl);
+
             window.setTimeout(function () {
                 $('#changeOnDelay').text('Hello WORLD!!!!!!');
-                testItem();
+                //testItem();
             }, 1000);
         });
 
@@ -34,5 +39,9 @@
     <h1>This will be the Rose Weather Display with Apache2 No Python</h1>
     <h2 id="changeOnDelay">This should change again</h2>
     <div id="testing"></div>
+    <div class="img-container">
+        <img id="radarImage" class="top" src="" alt="">
+        <img id="mapImage" class="bottom" src="" alt="">
+    </div>
 </body>
 </html>
