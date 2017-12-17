@@ -13,7 +13,7 @@ div {
 }
 
 #inner_fixed {
-    height: 75px;
+    height: 60px;
     background-color: grey;
 
     display: table-row;
