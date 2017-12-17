@@ -21,9 +21,11 @@ $(document).ready(function () {
     getWeatherData().done(function (result) {
         console.log('got weather data');
 
-        var currentTemp = result.current_observation.temp_f;
+        $('#currentTemp').text(result.current_observation.temp_f);
 
-        $('#currentTemp').text(currentTemp);
+        $('#currentConditions').text(result.current_observation.weather);
+
+        $('#currentConditionsIcon').attr('src', result.current_observation.icon_url);
 
     }).fail(function (result) {
         console.log('Error: ' + result.responseText);
