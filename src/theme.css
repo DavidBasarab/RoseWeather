@@ -31,7 +31,7 @@ div {
 }
 
 .topRow {
-    font-size: 5vw;
+    font-size: 4.5vw;
     width: 99%;
     text-align: center;
 }
@@ -43,7 +43,7 @@ label {
 }
 
 .tempDegree, #currentTemp {
-    font-size: 6vw;
+    font-size: 5.5vw;
 }
 
 #currentConditionsIcon {
@@ -52,17 +52,17 @@ label {
 }
 
 #conditions {
-    font-size: 5vw;
+    font-size: 4.5vw;
 }
 
 #currentRainPercent {
-    font-size: 4vw;
+    font-size: 3.5vw;
     vertical-align: middle;
     margin-top: 10px;
 }
 
 .hiLow {
-    font-size: 4vw;
+    font-size: 3.5vw;
     text-align: left;
     margin-top: 15px;
 }
