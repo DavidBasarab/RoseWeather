@@ -1,45 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Rose Weather Display</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script type='text/javascript' src='http://www.bing.com/api/maps/mapcontrol?callback=GetMap' async defer></script>
-    <link rel="stylesheet" type="text/css" href="theme.css">
-    <script src="radarMap.js"></script>
-    <script src="main.js"></script>
-</head>
-<body>
-    <div id="outer">
-        <div id="inner_fixed">
-            <div class="row topRow">
-                <div class="col-xs-2">
-                    <label id="currentTemp"></label>
-                    <label>&deg;</label>
-                </div>
-                <div id="conditions" class="col-xs-7">
-                    <label id="currentConditions"></label>
-                    <img id="currentConditionsIcon" src="">
-                </div>
-                <div id="currentRainPercent" class="col-xs-3">
-                    <label>Rain:</label>
-                    <label id="rainPercent"></label>
-                    <label>&#37;</label>
-                </div>
-            </div>
-        </div>
-        <div id="inner_remaining">
-            <div class="row fill">
-                <div class="col-xs-6 fill" style="background-color: greenyellow">
-                    <div id="myMap" style="position:relative;width:98%;height:98%;"></div>
-                </div>
-                <div class="col-xs-6 fill" style="background-color: hotpink">
-                    HOURLY
-                </div>
-            </div>
-        </div>
-    </div>
-</body>
+	<head>
+		<meta charset="UTF-8">
+		<title>Rose Weather Display</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script type='text/javascript' src='http://www.bing.com/api/maps/mapcontrol?callback=GetMap' async
+				defer></script>
+		<link rel="stylesheet" type="text/css" href="theme.css">
+		<script src="radarMap.js"></script>
+		<script src="main.js"></script>
+	</head>
+	<body>
+		<div id="outer">
+			<div id="inner_fixed">
+				<div class="row topRow">
+					<div class="col-xs-2">
+						<div style="text-align: center; margin: 25px 0px 0px 0px;">
+							<label id="currentTemp"></label>
+							<label>&deg;</label>
+						</div>
+					</div>
+					<div id="conditions" class="col-xs-7">
+						<div id="currentConditions"></div>
+						<img id="currentConditionsIcon" src="">
+					</div>
+					<div id="currentRainPercent" class="col-xs-3">
+						<div>Rain</div>
+						<label id="rainPercent"></label>
+						<label>&#37;</label>
+					</div>
+				</div>
+			</div>
+			<div id="inner_remaining">
+				<div class="row fill">
+					<div class="col-xs-6 fill" style="background-color: greenyellow">
+						<div id="myMap" style="position:relative;width:98%;height:98%;"></div>
+					</div>
+					<div class="col-xs-6 fill" style="background-color: hotpink">
+						HOURLY
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
 </html>
