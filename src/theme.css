@@ -45,6 +45,10 @@ label {
     font-size: 4vw;
 }
 
+.sunInfo {
+    font-size: 2vw;
+}
+
 #currentConditionsIcon {
     height: 60px;
     width: 60px;
