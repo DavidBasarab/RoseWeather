@@ -46,6 +46,11 @@ label {
     font-size: 5vw;
 }
 
+#currentConditionsIcon {
+    height: 25px;
+    width: 25px;
+}
+
 #conditions {
     font-size: 3vw;
 }
