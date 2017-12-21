@@ -57,4 +57,5 @@ label {
 #currentRainPercent {
     font-size: 2vw;
     vertical-align: middle;
+    margin-top: 10px;
 }
