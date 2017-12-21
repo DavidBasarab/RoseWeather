@@ -45,10 +45,6 @@ label {
     font-size: 4vw;
 }
 
-.sunInfo {
-    font-size: 2vw;
-}
-
 #currentConditionsIcon {
     height: 50px;
     width: 50px;
@@ -60,5 +56,5 @@ label {
 
 #currentRainPercent {
     font-size: 2vw;
-    margin-top: 15px;
+    vertical-align: middle;
 }

@@ -51,6 +51,10 @@ $(document).ready(function () {
 
             $('#rainPercent').text(currentHour.pop);
 
+            $('#sunRise').text(result.sun_phase.sunrise.hour + ':' + result.sun_phase.sunrise.minute + ' AM');
+
+            $('#sunSet').text((result.sun_phase.sunset.hour - 12) + ':' + result.sun_phase.sunset.minute + ' PM');
+
             window.setTimeout(refreshWeatherData, 600000);
 
         }).fail(function (result) {
