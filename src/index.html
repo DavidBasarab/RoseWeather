@@ -16,17 +16,31 @@
 		<div id="outer">
 			<div id="inner_fixed">
 				<div class="row topRow">
-					<div class="col-xs-2">
-						<div style="text-align: center; margin: 25px 0px 0px 0px;">
-							<label id="currentTemp"></label>
-							<label class="tempDegree">&deg;</label>
+					<div class="col-xs-4">
+						<div class="row">
+							<div class="col-xs-6" style="text-align: center; margin: 25px 0px 0px 0px;">
+								<label id="currentTemp"></label>
+								<label class="tempDegree">&deg;</label>
+							</div>
+							<div class="col-xs-6 hiLow">
+								<div>
+									<label>Hi: </label>
+									<label id="hiTemp"></label>
+									<label>&deg;</label>
+								</div>
+								<div>
+									<label>Low: </label>
+									<label id="loTemp"></label>
+									<label>&deg;</label>
+								</div>
+							</div>
 						</div>
 					</div>
-					<div id="conditions" class="col-xs-7">
+					<div id="conditions" class="col-xs-4">
 						<div id="currentConditions"></div>
 						<img id="currentConditionsIcon" src="">
 					</div>
-					<div id="currentRainPercent" class="col-xs-3">
+					<div id="currentRainPercent" class="col-xs-4">
 						<div class="row">
 							<div class="col-xs-6">
 								<div>Rain</div>

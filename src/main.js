@@ -55,6 +55,9 @@ $(document).ready(function () {
 
             $('#sunSet').text((result.sun_phase.sunset.hour - 12) + ':' + result.sun_phase.sunset.minute + ' PM');
 
+            $('#hiTemp').text(result.forecast.simpleforecast.forecastday[0].high.fahrenheit);
+            $('#loTemp').text(result.forecast.simpleforecast.forecastday[0].low.fahrenheit);
+
             window.setTimeout(refreshWeatherData, 600000);
 
         }).fail(function (result) {

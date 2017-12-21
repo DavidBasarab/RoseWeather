@@ -59,3 +59,9 @@ label {
     vertical-align: middle;
     margin-top: 10px;
 }
+
+.hiLow {
+    font-size: 2vw;
+    text-align: left;
+    margin-top: 15px;
+}
