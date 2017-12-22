@@ -19,34 +19,65 @@ $(document).ready(function () {
     }
 
     function loadDailyForecast(result) {
-        var testArray = [
-            {
-                day : "Monday",
-                hiTemp : 65,
-                loTemp : 21,
-                conditions : 'Sunny',
-                rainChance : 0,
-                conditionUrl : 'http://icons.wxug.com/i/c/v3/cloudy.svg'
-            },
-            {
-                day : "Tuesday",
-                hiTemp : 32,
-                loTemp : 5,
-                conditions : 'Snowy',
-                rainChance : 95,
-                conditionUrl : 'http://icons.wxug.com/i/c/v3/nt_cloudy.svg'
-            },
-            {
-                day : "Wednesday",
-                hiTemp : 43,
-                loTemp : 40,
-                conditions : 'Cloudy',
-                rainChance : 50,
-                conditionUrl : 'http://icons.wxug.com/i/c/v3/cloudy.svg'
-            }
+        var dayArray = [
+            // {
+            //     day : "Monday",
+            //     hiTemp : 65,
+            //     loTemp : 21,
+            //     conditions : 'Sunny',
+            //     rainChance : 0,
+            //     conditionUrl : 'http://icons.wxug.com/i/c/v3/cloudy.svg'
+            // },
+            // {
+            //     day : "Tuesday",
+            //     hiTemp : 32,
+            //     loTemp : 5,
+            //     conditions : 'Snowy',
+            //     rainChance : 95,
+            //     conditionUrl : 'http://icons.wxug.com/i/c/v3/nt_cloudy.svg'
+            // },
+            // {
+            //     day : "Wednesday",
+            //     hiTemp : 43,
+            //     loTemp : 40,
+            //     conditions : 'Cloudy',
+            //     rainChance : 50,
+            //     conditionUrl : 'http://icons.wxug.com/i/c/v3/cloudy.svg'
+            // }
         ];
 
-        $('#dailyWeatherTemplate').tmpl(testArray).appendTo('#dailyRowContainer');
+        addDailyForecast(dayArray, result, 1);
+        addDailyForecast(dayArray, result, 2);
+        addDailyForecast(dayArray, result, 3);
+
+        $('#dailyWeatherTemplate').tmpl(dayArray).appendTo('#dailyRowContainer');
+    }
+
+    function addDailyForecast(dayArray, result, index) {
+        dayArray.push({
+            day : result.forecast.simpleforecast.forecastday[index].date.weekday,
+            hiTemp : result.forecast.simpleforecast.forecastday[index].high.fahrenheit,
+            loTemp : result.forecast.simpleforecast.forecastday[index].low.fahrenheit,
+            conditions : result.forecast.simpleforecast.forecastday[index].conditions,
+            rainChance : result.forecast.simpleforecast.forecastday[index].pop,
+            conditionUrl : getConditionIconUrl(result.forecast.simpleforecast.forecastday[index].icon_url, result.forecast.simpleforecast.forecastday[1].icon)
+        });
+    }
+
+    function getConditionIconUrl(startIconUrl, icon)
+    {
+        //http://icons.wxug.com/i/c/v4/clear.svg
+        var showNight = startIconUrl.includes("nt_");
+
+        var finalUrlIcon  = 'https://icons.wxug.com/i/c/v3/';
+
+        if(showNight) {
+            finalUrlIcon = finalUrlIcon + 'nt_';
+        }
+
+        finalUrlIcon = finalUrlIcon + icon + '.svg';
+
+        return finalUrlIcon;
     }
 
     function refreshWeatherData() {
@@ -59,23 +90,7 @@ $(document).ready(function () {
 
             $('#currentConditions').text(result.current_observation.weather);
 
-
-            //http://icons.wxug.com/i/c/v4/clear.svg
-            var showNight = result.current_observation.icon_url.includes("nt_");
-
-            var finalUrlIcon  = 'https://icons.wxug.com/i/c/v3/';
-
-            if(showNight) {
-                finalUrlIcon = finalUrlIcon + 'nt_';
-            }
-
-            finalUrlIcon = finalUrlIcon + result.current_observation.icon + '.svg';
-
-            //http://icons.wxug.com/i/c/v3/nt_partlycloudy.svg
-
-            console.log('Icon Url := ' + finalUrlIcon);
-
-            $('#currentConditionsIcon').attr('src', finalUrlIcon);
+            $('#currentConditionsIcon').attr('src', getConditionIconUrl(result.current_observation.icon_url, result.current_observation.icon));
 
             // Need to find RAIN % for current hour
             var currentHour = result.hourly_forecast[0];
