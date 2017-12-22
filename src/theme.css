@@ -99,3 +99,19 @@ label {
     height: 25px;
     width: 25px;
 }
+
+.img-container {
+    position: relative;
+}
+
+.imageRadar {
+    width: 100%;
+    height: 100%;
+}
+
+.img-container .top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}

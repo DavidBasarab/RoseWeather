@@ -5,55 +5,20 @@
 		<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
 		<meta charset="utf-8">
 		<style>
-			/* Always set the map height explicitly to define the size of the div
-			 * element that contains the map. */
-			#map {
-				height: 100%;
-			}
-			/* Optional: Makes the sample page fill the window. */
-			html, body {
-				height: 100%;
-				margin: 0;
-				padding: 0;
+			.img-container { position: relative; }
+
+			.img-container .top {
+				position: absolute;
+				top: 0;
+				left: 0;
+				z-index: 1;
 			}
 		</style>
 	</head>
 	<body>
-		<div id="map"></div>
-		<script>
-
-            function initMap() {
-                var map = new google.maps.Map(document.getElementById('map'), {
-                    zoom: 18,
-                    center: {lat: 37.783, lng: -122.403}
-                });
-
-                var bounds = {
-                    17: [[20969, 20970], [50657, 50658]],
-                    18: [[41939, 41940], [101315, 101317]],
-                    19: [[83878, 83881], [202631, 202634]],
-                    20: [[167757, 167763], [405263, 405269]]
-                };
-
-                var imageMapType = new google.maps.ImageMapType({
-                    getTileUrl: function(coord, zoom) {
-                        if (zoom < 17 || zoom > 20 ||
-                            bounds[zoom][0][0] > coord.x || coord.x > bounds[zoom][0][1] ||
-                            bounds[zoom][1][0] > coord.y || coord.y > bounds[zoom][1][1]) {
-                            return null;
-                        }
-
-                        return ['//www.gstatic.com/io2010maps/tiles/5/L2_',
-                            zoom, '_', coord.x, '_', coord.y, '.png'].join('');
-                    },
-                    tileSize: new google.maps.Size(256, 256)
-                });
-
-                map.overlayMapTypes.push(imageMapType);
-            }
-		</script>
-		<script async defer
-				src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBX4d3MR3wPYbbNNzgHuNGmpaN-zqeDt5s&callback=initMap">
-		</script>
+		<div class="img-container">
+			<img  style="width: 500px; height: 500px;" class="top" src="http://api.wunderground.com/api/0b7c673843d8c122/animatedradar/lang:EN/image.gif?maxlat=40.7209201431&maxlon=-74.1827248594&minlat=25.3324717742&minlon=-94.6832131406&width=1866&height=1680&newmaps=0&reproj.automerc=1&num=5&delay=25&timelabel=1&timelabel.y=10&rainsnow=1&smooth=1&radar_bitmap=1&xnoclutter=1&xnoclutter_mask=1&cors=1" alt="">
+			<img  style="width: 500px; height: 500px;" class="bottom" src="http://maps.googleapis.com/maps/api/staticmap?center=33.365736,-84.432969&zoom=10&size=933x840&maptype=roadmap&key=AIzaSyDxuhw4SRRQogAUwWZV2-PLwNqKHggOKpE&markers=color:red|size:small|33.365736,-84.432969" alt="">
+		</div>
 	</body>
 </html>
