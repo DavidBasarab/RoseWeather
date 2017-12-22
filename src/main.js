@@ -60,7 +60,7 @@ $(document).ready(function () {
             loTemp : result.forecast.simpleforecast.forecastday[index].low.fahrenheit,
             conditions : result.forecast.simpleforecast.forecastday[index].conditions,
             rainChance : result.forecast.simpleforecast.forecastday[index].pop,
-            conditionUrl : getConditionIconUrl(result.forecast.simpleforecast.forecastday[index].icon_url, result.forecast.simpleforecast.forecastday[1].icon)
+            conditionUrl : getConditionIconUrl(result.forecast.simpleforecast.forecastday[index].icon_url, result.forecast.simpleforecast.forecastday[index].icon)
         });
     }
 
@@ -76,6 +76,8 @@ $(document).ready(function () {
         }
 
         finalUrlIcon = finalUrlIcon + icon + '.svg';
+
+        console.log('IconUrl := ' + finalUrlIcon);
 
         return finalUrlIcon;
     }
