@@ -70,9 +70,9 @@ label {
 .dailyRow {
     font-size: 2.5vw;
     margin-top: 3vh;
-    border-bottom-color: black;
-    border-bottom-style: solid;
-    border-bottom-width: 5px;
+    /*border-bottom-color: black;*/
+    /*border-bottom-style: solid;*/
+    /*border-bottom-width: 5px;*/
 }
 
 .dailyDay {
