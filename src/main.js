@@ -25,21 +25,24 @@ $(document).ready(function () {
                 hiTemp : 65,
                 loTemp : 21,
                 conditions : 'Sunny',
-                rainChance : 0
+                rainChance : 0,
+                conditionUrl : 'http://icons.wxug.com/i/c/v3/cloudy.svg'
             },
             {
                 day : "Tuesday",
                 hiTemp : 32,
                 loTemp : 5,
                 conditions : 'Snowy',
-                rainChance : 95
+                rainChance : 95,
+                conditionUrl : 'http://icons.wxug.com/i/c/v3/nt_cloudy.svg'
             },
             {
                 day : "Wednesday",
                 hiTemp : 43,
                 loTemp : 40,
                 conditions : 'Cloudy',
-                rainChance : 50
+                rainChance : 50,
+                conditionUrl : 'http://icons.wxug.com/i/c/v3/cloudy.svg'
             }
         ];
 
