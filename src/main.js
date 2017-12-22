@@ -18,6 +18,34 @@ $(document).ready(function () {
         });
     }
 
+    function loadDailyForecast(result) {
+        var testArray = [
+            {
+                day : "Monday",
+                hiTemp : 65,
+                loTemp : 21,
+                conditions : 'Sunny',
+                rainChance : 0
+            },
+            {
+                day : "Tuesday",
+                hiTemp : 32,
+                loTemp : 5,
+                conditions : 'Snowy',
+                rainChance : 95
+            },
+            {
+                day : "Wednesday",
+                hiTemp : 43,
+                loTemp : 40,
+                conditions : 'Cloudy',
+                rainChance : 50
+            }
+        ];
+
+        $('#dailyWeatherTemplate').tmpl(testArray).appendTo('#dailyRowContainer');
+    }
+
     function refreshWeatherData() {
         getWeatherData().done(function (result) {
             console.log('got weather data');
@@ -57,6 +85,8 @@ $(document).ready(function () {
 
             $('#hiTemp').text(result.forecast.simpleforecast.forecastday[0].high.fahrenheit);
             $('#loTemp').text(result.forecast.simpleforecast.forecastday[0].low.fahrenheit);
+
+            loadDailyForecast(result);
 
             window.setTimeout(refreshWeatherData, 600000);
 
