@@ -13,6 +13,38 @@
 		<script src="main.js"></script>
 	</head>
 	<body>
+		<script id="dailyWeatherTemplate" type="text/x-jQuery-tmpl">
+			<div class="dailyRow">
+				<div class="dailyDay">
+					${day}
+				</div>
+				<div class="row">
+					<div class="col-xs-4 dailyTemp">
+						<div>
+							<label>H: </label>
+							<label>${hiTemp}</label>
+						</div>
+						<div>
+							<label>L: </label>
+							<label>${loTemp}</label>
+						</div>
+					</div>
+					<div class="col-xs-4 dailyDay">
+						<label>
+							${conditions}
+						</label>
+						<img class="dailyForecastImage" src="http://icons.wxug.com/i/c/v3/cloudy.svg">
+					</div>
+					<div class="col-xs-4 dailyRain">
+						<div>
+							<label>Rain: </label>
+							<label>${rainChance}%</label>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</script>
 		<div id="outer">
 			<div id="inner_fixed">
 				<div class="row topRow">
@@ -64,102 +96,105 @@
 						<div id="myMap" style="position:relative;width:98%;height:98%;"></div>
 					</div>
 					<div class="col-xs-6 fill" style="background-color: hotpink">
-						<div class="dailyRow">
-							<div class="dailyDay">
-								Tuesday
-							</div>
-							<div class="row">
-								<div class="col-xs-4 dailyTemp">
-									<div>
-										<label>H: </label>
-										<label>60</label>
+						<div id="dailyRowContainer">
+							<div class="dailyRow">
+								<div class="dailyDay">
+									Tuesday
+								</div>
+								<div class="row">
+									<div class="col-xs-4 dailyTemp">
+										<div>
+											<label>H: </label>
+											<label>60</label>
+										</div>
+										<div>
+											<label>L: </label>
+											<label>17</label>
+										</div>
 									</div>
-									<div>
-										<label>L: </label>
-										<label>17</label>
+									<div class="col-xs-4 dailyDay">
+										<label>
+											Overcast
+										</label>
+										<img class="dailyForecastImage" src="http://icons.wxug.com/i/c/v3/cloudy.svg">
+									</div>
+									<div class="col-xs-4 dailyRain">
+										<div>
+											<label>Rain: </label>
+											<label>75%</label>
+										</div>
 									</div>
 								</div>
-								<div class="col-xs-4 dailyDay">
-									<label>
-										Overcast
-									</label>
-									<img class="dailyForecastImage" src="http://icons.wxug.com/i/c/v3/cloudy.svg">
-								</div>
-								<div class="col-xs-4 dailyRain">
-									<div>
-										<label>Rain: </label>
-										<label>75%</label>
-									</div>
-								</div>
-							</div>
-							<div class="row dailyDay">
+								<div class="row dailyDay">
 
+								</div>
+							</div>
+							<div class="dailyRow">
+								<div class="dailyDay">
+									Tuesday
+								</div>
+								<div class="row">
+									<div class="col-xs-4 dailyTemp">
+										<div>
+											<label>H: </label>
+											<label>60</label>
+										</div>
+										<div>
+											<label>L: </label>
+											<label>17</label>
+										</div>
+									</div>
+									<div class="col-xs-4 dailyDay">
+										<label>
+											Overcast
+										</label>
+										<img class="dailyForecastImage" src="http://icons.wxug.com/i/c/v3/cloudy.svg">
+									</div>
+									<div class="col-xs-4 dailyRain">
+										<div>
+											<label>Rain: </label>
+											<label>75%</label>
+										</div>
+									</div>
+								</div>
+								<div class="row dailyDay">
+
+								</div>
+							</div>
+							<div class="dailyRow">
+								<div class="dailyDay">
+									Tuesday
+								</div>
+								<div class="row">
+									<div class="col-xs-4 dailyTemp">
+										<div>
+											<label>H: </label>
+											<label>60</label>
+										</div>
+										<div>
+											<label>L: </label>
+											<label>17</label>
+										</div>
+									</div>
+									<div class="col-xs-4 dailyDay">
+										<label>
+											Overcast
+										</label>
+										<img class="dailyForecastImage" src="http://icons.wxug.com/i/c/v3/cloudy.svg">
+									</div>
+									<div class="col-xs-4 dailyRain">
+										<div>
+											<label>Rain: </label>
+											<label>75%</label>
+										</div>
+									</div>
+								</div>
+								<div class="row dailyDay">
+
+								</div>
 							</div>
 						</div>
-						<div class="dailyRow">
-							<div class="dailyDay">
-								Tuesday
-							</div>
-							<div class="row" ">
-								<div class="col-xs-4 dailyTemp">
-									<div>
-										<label>H: </label>
-										<label>60</label>
-									</div>
-									<div>
-										<label>L: </label>
-										<label>17</label>
-									</div>
-								</div>
-								<div class="col-xs-4 dailyDay">
-									<label>
-										Overcast
-									</label>
-									<img class="dailyForecastImage" src="http://icons.wxug.com/i/c/v3/cloudy.svg">
-								</div>
-								<div class="col-xs-4 dailyRain">
-									<div>
-										<label>Rain: </label>
-										<label>75%</label>
-									</div>
-								</div>
-							</div>
-							<div class="row dailyDay">
 
-							</div>
-						</div>
-						<div class="dailyRow">
-							<div class="dailyDay">
-								Tuesday
-							</div>
-							<div class="row">
-								<div class="col-xs-4 dailyTemp">
-									<div>
-										<label>H: </label>
-										<label>60</label>
-									</div>
-									<div>
-										<label>L: </label>
-										<label>17</label>
-									</div>
-								</div>
-								<div class="col-xs-4 dailyDay">
-									<label>
-										Overcast
-									</label>
-									<img class="dailyForecastImage" src="http://icons.wxug.com/i/c/v3/cloudy.svg">
-								</div>
-								<div class="col-xs-4 dailyRain">
-									<div>
-										<label>Rain: </label>
-										<label>75%</label>
-									</div>
-								</div>
-							</div>
-							<div class="row dailyDay">
-
-							</div>
-						</div>
 					</div>
 				</div>
 			</div>
