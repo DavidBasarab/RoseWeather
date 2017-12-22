@@ -86,3 +86,8 @@ label {
 .dailyRain {
     text-align: center;
 }
+
+.dailyForecastImage {
+    height: 25px;
+    width: 25px;
+}
