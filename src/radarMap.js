@@ -1,46 +1,96 @@
-var map, animatedLayer;
+// Configure Aeris API keys
+aeris.config.set({
+    apiId: 'Dxb99XHofRen5ocF6w26T',
+    apiSecret: 'xJGhqVqhMP7JuySRMl9DryUPZwvc9b3k3AzSgPD8'
+});
 
-//Weather tile url from Iowa Environmental Mesonet (IEM): http://mesonet.agron.iastate.edu/ogc/
-var urlTemplate = 'http://mesonet.agron.iastate.edu/cache/tile.py/1.0.0/nexrad-n0q-{timestamp}/{zoom}/{x}/{y}.png';
+// Create the map, where 'map-canvas' is the id of an HTML element.
+var map = new aeris.maps.Map('map-canvas', {
+    zoom: 8,
+    center: [33.365736, -84.432969],
+    baseLayer: new aeris.maps.layers.AerisTile({
+        tileType: 'flat-dk',
+        zIndex: 1
+    })
+});
 
-//The time stamps values for the IEM service for the last 50 minutes broken up into 5 minute increments.
-var timestamps = ['900913-m50m', '900913-m45m', '900913-m40m', '900913-m35m', '900913-m30m', '900913-m25m', '900913-m20m', '900913-m15m', '900913-m10m', '900913-m05m', '900913'];
+// Create 'water-depth' layer
+var waterDepth = new aeris.maps.layers.AerisTile({
+    tileType: 'water-depth',
+    zIndex: 3,
+    map: map
+});
 
-function GetMap() {
-    map = new Microsoft.Maps.Map('#myMap', {
-        credentials: 'AukiFJufqy5nuE7sRh7ojpSz5EpL2zEHIHiFJryHdayJeiVDJ-x3DescRvsqLVDe',
-        center: new Microsoft.Maps.Location(33.365736, -84.432969),
-        zoom: 10,
-        showZoomButtons: false,
-        showLocateMeButton: false,
-        showMapTypeSelector: false
-    });
+// Create 'radar' layer
+var radar = new aeris.maps.layers.AerisTile({
+    tileType: 'radar',
+    zIndex: 4,
+    map: map
+});
 
-    var tileSources = [];
 
-    //Create a tile source for each time stamp.
-    for (var i = 0; i < timestamps.length; i++) {
-        var tileSource = new Microsoft.Maps.TileSource({
-            uriConstructor: urlTemplate.replace('{timestamp}', timestamps[i])
-        });
-        tileSources.push(tileSource);
-    }
+var roadsDk = new aeris.maps.layers.AerisTile({
+    tileType: 'roads-dk',
+    zIndex: 9,
+    map: map
+});
 
-    //Create the animated tile layer and add it to the map.
-    animatedLayer = new Microsoft.Maps.AnimatedTileLayer({
-        mercator: tileSources,
-        frameRate: 500
-    });
+// Create 'interstates' layer
+var interstatesDkLg = new aeris.maps.layers.AerisTile({
+    tileType: 'interstates-dk-lg',
+    zIndex: 11,
+    map: map
+});
 
-    map.layers.insert(animatedLayer);
+// // Create 'rivers' layer
+// var rivers = new aeris.maps.layers.AerisTile({
+//     tileType: 'rivers',
+//     zIndex: 5,
+//     map: map
+// });
 
-    var center = map.getCenter();
+// Create 'admin-cities' layer
+var adminCitiesDk = new aeris.maps.layers.AerisTile({
+    tileType: 'admin-cities-dk',
+    zIndex: 99,
+    map: map
+});
 
-    //Create custom Pushpin
-    var pin = new Microsoft.Maps.Pushpin(center, {
-        color: 'red'
-    });
+// Create 'alerts' layer
+var alerts = new aeris.maps.layers.AerisTile({
+    tileType: 'alerts',
+    zIndex: 14,
+    map: map
+});
 
-    //Add the pushpin to the map
-    map.entities.push(pin);
-}
+var marker = new aeris.maps.markers.Marker({
+    position: [33.365736, -84.432969]
+});
+
+marker.setMap(map);
+
+// // Create the animation
+// // See https://github.com/aerisweather/aerisjs/blob/master/examples/animations/sync.html
+// // for a more complete usage demonstration
+// var animation = new aeris.maps.animations.AnimationSync([
+//     radar,
+//     alerts
+// ], {
+//     from: Date.now() - 1000 * 60 * 60 * .25,    // 2 hours ago
+//     to: Date.now()
+// });
+//
+// // Display the current time of the animation
+// // A 'change:times' event is triggered
+// // with a date object corresponding to the
+// // current animation frame.
+// animation.on('change:time', function(date) {
+//     // Update the hh:mm display
+//     var formattedTime = date.toTimeString().replace(/.*(\d{2}:\d{2})(:\d{2}).*/, "$1");
+//     $('#currentTime').text(formattedTime);
+//     // Update the position of the time range input
+//     $('#time').val(date.getTime());
+// });
+//
+// // Start the animation
+// animation.start();

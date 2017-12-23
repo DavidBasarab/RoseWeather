@@ -11,6 +11,9 @@
 		<script type="text/javascript" src="https://cdn.aerisjs.com/aeris.js"></script>
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
+
+		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=geometry&key=AIzaSyDxuhw4SRRQogAUwWZV2-PLwNqKHggOKpE"></script>
+		<script type="text/javascript" src="//cdn.aerisjs.com/aeris-interactive/aim-gmaps.js"></script>
 		<style>
 			#map-canvas {
 				width: 800px;
@@ -33,20 +36,20 @@
 
             // Create the map, where 'map-canvas' is the id of an HTML element.
             var map = new aeris.maps.Map('map-canvas', {
-                zoom: 8,
+                zoom: 9,
                 center: [33.365736, -84.432969],
-                baseLayer: new aeris.maps.layers.AerisTile({
-                    tileType: 'flat-dk',
-                    zIndex: 1
-                })
+                // baseLayer: new aeris.maps.layers.AerisTile({
+                //     tileType: 'flat-dk',
+                //     zIndex: 1
+                // })
             });
 
             // Create 'water-depth' layer
-            var waterDepth = new aeris.maps.layers.AerisTile({
-                tileType: 'water-depth',
-                zIndex: 3,
-                map: map
-            });
+            // var waterDepth = new aeris.maps.layers.AerisTile({
+            //     tileType: 'water-depth',
+            //     zIndex: 3,
+            //     map: map
+            // });
 
             // Create 'radar' layer
             var radar = new aeris.maps.layers.AerisTile({
@@ -56,18 +59,18 @@
             });
 
 
-            var roadsDk = new aeris.maps.layers.AerisTile({
-                tileType: 'roads-dk',
-                zIndex: 9,
-                map: map
-            });
-
-            // Create 'interstates' layer
-            var interstatesDkLg = new aeris.maps.layers.AerisTile({
-                tileType: 'interstates-dk-lg',
-                zIndex: 11,
-                map: map
-            });
+            // var roadsDk = new aeris.maps.layers.AerisTile({
+            //     tileType: 'roads-dk',
+            //     zIndex: 9,
+            //     map: map
+            // });
+			//
+            // // Create 'interstates' layer
+            // var interstatesDkLg = new aeris.maps.layers.AerisTile({
+            //     tileType: 'interstates-dk-lg',
+            //     zIndex: 11,
+            //     map: map
+            // });
 
             // // Create 'rivers' layer
             // var rivers = new aeris.maps.layers.AerisTile({
@@ -77,18 +80,18 @@
             // });
 
             // Create 'admin-cities' layer
-            var adminCitiesDk = new aeris.maps.layers.AerisTile({
-                tileType: 'admin-cities-dk',
-                zIndex: 99,
-                map: map
-            });
+            // var adminCitiesDk = new aeris.maps.layers.AerisTile({
+            //     tileType: 'admin-cities-dk',
+            //     zIndex: 99,
+            //     map: map
+            // });
 
             // Create 'alerts' layer
-            var alerts = new aeris.maps.layers.AerisTile({
-                tileType: 'alerts',
-                zIndex: 14,
-                map: map
-            });
+            // var alerts = new aeris.maps.layers.AerisTile({
+            //     tileType: 'alerts',
+            //     zIndex: 14,
+            //     map: map
+            // });
 
             var marker = new aeris.maps.markers.Marker({
                 position: [33.365736, -84.432969]

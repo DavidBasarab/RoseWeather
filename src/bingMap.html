@@ -1,48 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 	<head>
-		<meta charset="UTF-8">
-		<title>Rose Weather Display</title>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-		<script type='text/javascript' src='http://www.bing.com/api/maps/mapcontrol?callback=GetMap' async defer></script>
-		<link rel="stylesheet" type="text/css" href="theme.css">
-		<script src="radarMap.js"></script>
-		<script src="main.js"></script>
+		<title>weatherRadarMapHTML</title>
+		<meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
 	</head>
 	<body>
-		<script>
-            $(document).ready(function () {
+		<div id='printoutPanel'></div>
 
-                function testItem() {
-                    var flickerAPI = "http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
-                    $.getJSON(flickerAPI, {
-                        tags: "mount rainier",
-                        tagmode: "any",
-                        format: "json"
-                    })
-                        .done(function (data) {
-                            $('#testing').text(JSON.stringify(data));
-                        });
+		<div id='myMap' style='width: 100vw; height: 100vh;'></div>
+		<script type='text/javascript'>
+            function loadMapScenario() {
+                var map = new Microsoft.Maps.Map(document.getElementById('myMap'), {
+                    /* No need to set credentials if already passed in URL */
+                    center: new Microsoft.Maps.Location(33.365736, -84.432969),
+                    zoom: 10,
+                    showZoomButtons : false,
+                    showLocateMeButton : false,
+                    showMapTypeSelector : false
+                });
+                // tile url from Iowa Environmental Mesonet of Iowa State University
+                var urlTemplate = 'https://mesonet.agron.iastate.edu/cache/tile.py/1.0.0/nexrad-n0q-{timestamp}/{zoom}/{x}/{y}.png';
+                var timestamps = ['900913-m50m', '900913-m45m', '900913-m40m', '900913-m35m', '900913-m30m', '900913-m25m', '900913-m20m', '900913-m15m', '900913-m10m', '900913-m05m', '900913'];
+                var tileSources = [];
+                for (var i = 0; i < timestamps.length; i++) {
+                    var tileSource = new Microsoft.Maps.TileSource({
+                        uriConstructor: urlTemplate.replace('{timestamp}', timestamps[i])
+                    });
+                    tileSources.push(tileSource);
                 }
+                var animatedLayer = new Microsoft.Maps.AnimatedTileLayer({ mercator: tileSources, frameRate: 500 });
+                map.layers.insert(animatedLayer);
 
-                console.log('Document Ready');
+                var center = map.getCenter();
+                //Create custom Pushpin
+                var pin = new Microsoft.Maps.Pushpin(center, {
+                    color: 'red'
+                });
+                //Add the pushpin to the map
+                map.entities.push(pin);
 
-                $('#mapImage').attr('src', googleMapImageUrl);
-                $('#radarImage').attr('src', radarImageUrl);
-
-                window.setTimeout(function () {
-                    $('#changeOnDelay').text('Hello WORLD!!!!!!');
-                    //testItem();
-                }, 1000);
-            });
-
-
+            }
 		</script>
-		<h1>This will be the Rose Weather Display with Apache2 No Python</h1>
-		<h2 id="changeOnDelay">This should change again</h2>
-		<div id="testing"></div>
-		<div id="myMap" style="position:relative;width:600px;height:400px;"></div>
+		<script type='text/javascript' src='https://www.bing.com/api/maps/mapcontrol?key=AukiFJufqy5nuE7sRh7ojpSz5EpL2zEHIHiFJryHdayJeiVDJ-x3DescRvsqLVDe&callback=loadMapScenario' async defer></script>
 	</body>
 </html>

@@ -9,6 +9,13 @@
 		<link rel="stylesheet" type="text/css" href="theme.css">
 		<script src="http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
 		<script src="main.js"></script>
+
+		<!-- Leaflet -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.2/leaflet.css"/>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.2/leaflet.js"></script>
+
+		<script type="text/javascript" src="https://cdn.aerisjs.com/aeris.js"></script>
+		<!--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>-->
 	</head>
 	<body>
 		<script id="dailyWeatherTemplate" type="text/x-jQuery-tmpl">
@@ -93,7 +100,7 @@
 				<div class="row fill">
 					<div class="col-xs-6 fill" style="background-color: greenyellow">
 						<div class="img-container">
-							
+							<div id="map-canvas"></div>
 						</div>
 					</div>
 					<div class="col-xs-6 fill" style="background-color: hotpink">
@@ -103,5 +110,6 @@
 				</div>
 			</div>
 		</div>
+		<script type="text/javascript" src="radarMap.js"></script>
 	</body>
 </html>
