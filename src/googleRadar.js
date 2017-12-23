@@ -78,9 +78,9 @@ function getCorners(center,zoom,mapWidth,mapHeight){
 var proj = new MercatorProjection();
 var G = google.maps;
 var centerPoint = new G.LatLng(33.365736, -84.432969);
-var zoom = 10;
-var width = 933;
-var height = 840;
+var zoom = 9;
+var width = 1920;
+var height = 1080;
 
 function refreshRadar() {
     var corners = getCorners(centerPoint,zoom,933,840);
