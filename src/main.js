@@ -108,6 +108,8 @@ $(document).ready(function () {
 
             loadDailyForecast(result);
 
+            loadRadarMap();
+
             window.setTimeout(refreshWeatherData, 600000);
 
         }).fail(function (result) {
