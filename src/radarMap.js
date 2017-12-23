@@ -2,6 +2,8 @@ function loadRadarMap() {
 
     console.log('Loading Radar Map');
 
+    $('#map-canvas').html('');
+
     // Configure Aeris API keys
     aeris.config.set({
         apiId: 'Dxb99XHofRen5ocF6w26T',

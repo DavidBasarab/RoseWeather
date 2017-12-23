@@ -50,6 +50,8 @@ $(document).ready(function () {
         addDailyForecast(dayArray, result, 2);
         addDailyForecast(dayArray, result, 3);
 
+        $('#dailyRowContainer').html('');
+
         $('#dailyWeatherTemplate').tmpl(dayArray).appendTo('#dailyRowContainer');
     }
 
@@ -85,6 +87,8 @@ $(document).ready(function () {
     function refreshWeatherData() {
         getWeatherData().done(function (result) {
             console.log('got weather data');
+
+
 
             //"http://icons.wxug.com/i/c/k/nt_partlycloudy.gif
 
