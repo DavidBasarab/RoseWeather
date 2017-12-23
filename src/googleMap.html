@@ -16,6 +16,7 @@
 		</style>
 
 		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=geometry&key=AIzaSyDxuhw4SRRQogAUwWZV2-PLwNqKHggOKpE"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	</head>
 	<body>
 		<script>
@@ -85,8 +86,14 @@
                 console.log(' NE: '+ NELatLon);
 
                 return {
-                    NELatLon : NELatLon,
-                    SWLatLon : SWLatLon
+                    NELatLon : {
+                        lat : NELatLon.lat(),
+						lng : NELatLon.lng()
+					},
+                    SWLatLon : {
+                        lat : SWLatLon.lat(),
+						lng : SWLatLon.lng()
+					}
 				}
             }
 
@@ -97,21 +104,28 @@
             var width = 933;
             var height = 840;
 
-            var corners = getCorners(centerPoint,zoom,933,840);
+            $(document).ready(function() {
+                var corners = getCorners(centerPoint,zoom,933,840);
 
-            console.log(JSON.stringify(corners));
+                console.log(JSON.stringify(corners));
 
-            var goolgeUrl = 'http://maps.googleapis.com/maps/api/staticmap?center=33.365736,-84.432969&zoom=' + zoom + '&size=' + width + 'x' + height +'&maptype=roadmap&key=AIzaSyDxuhw4SRRQogAUwWZV2-PLwNqKHggOKpE&markers=color:red|size:small|33.365736,-84.432969';
+                var googleUrl = 'http://maps.googleapis.com/maps/api/staticmap?center=33.365736,-84.432969&zoom=' + zoom + '&size=' + width + 'x' + height +'&maptype=roadmap&key=AIzaSyDxuhw4SRRQogAUwWZV2-PLwNqKHggOKpE&markers=color:red|size:small|33.365736,-84.432969';
 
-			console.log(goolgeUrl);
+                console.log(googleUrl);
 
-			var radarUrl = 'http://api.wunderground.com/api/0b7c673843d8c122/animatedradar/lang:EN/image.gif?maxlat=' + corners.NELatLon.lat + '&maxlon=' + corners.NELatLon.lng + '&minlat=33.846114506723005&minlon=-83.79232874121095&width=933&height=840&newmaps=0&reproj.automerc=1&num=5&delay=25&timelabel=1&timelabel.y=10&rainsnow=1&smooth=1&radar_bitmap=1&xnoclutter=1&xnoclutter_mask=1&cors=1';
+                var radarUrl = 'http://api.wunderground.com/api/0b7c673843d8c122/animatedradar/lang:EN/image.gif?maxlat=' + corners.NELatLon.lat + '&maxlon=' + corners.NELatLon.lng + '&minlat=' + corners.SWLatLon.lat +'&minlon=' + corners.SWLatLon.lng +'&width=' + width + '&height=' + height + '&newmaps=0&reproj.automerc=1&num=5&delay=25&timelabel=1&timelabel.y=10&rainsnow=1&smooth=1&radar_bitmap=1&xnoclutter=1&xnoclutter_mask=1&cors=1';
+
+                console.log(radarUrl);
+
+                $('#map').attr('src', googleUrl);
+                $('#overlay').attr('src', radarUrl);
+			});
 
 
 		</script>
 		<div class="img-container">
-			<img id="overlay"  style="width: 500px; height: 500px;" class="top" src="http://api.wunderground.com/api/0b7c673843d8c122/animatedradar/lang:EN/image.gif?maxlat=32.882690536999725&maxlon=-85.07360925878908&minlat=33.846114506723005&minlon=-83.79232874121095&width=933&height=840&newmaps=0&reproj.automerc=1&num=5&delay=25&timelabel=1&timelabel.y=10&rainsnow=1&smooth=1&radar_bitmap=1&xnoclutter=1&xnoclutter_mask=1&cors=1" alt="">
-			<img id="map"  style="width: 500px; height: 500px;" class="bottom" src="http://maps.googleapis.com/maps/api/staticmap?center=33.365736,-84.432969&zoom=10&size=933x840&maptype=roadmap&key=AIzaSyDxuhw4SRRQogAUwWZV2-PLwNqKHggOKpE&markers=color:red|size:small|33.365736,-84.432969" alt="">
+			<img id="overlay"  style="width: 500px; height: 500px;" class="top" src="" alt="">
+			<img id="map"  style="width: 500px; height: 500px;" class="bottom" src="" alt="">
 
 		</div>
 	</body>
