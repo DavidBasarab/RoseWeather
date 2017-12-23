@@ -104,6 +104,9 @@ $(document).ready(function () {
     var loop = false;
 
     function stopRadarLoop() {
+
+        console.log('stopping radar loop');
+        
         loop = false;
     }
 
