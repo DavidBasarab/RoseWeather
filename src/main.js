@@ -57,23 +57,22 @@ $(document).ready(function () {
 
     function addDailyForecast(dayArray, result, index) {
         dayArray.push({
-            day : result.forecast.simpleforecast.forecastday[index].date.weekday,
-            hiTemp : result.forecast.simpleforecast.forecastday[index].high.fahrenheit,
-            loTemp : result.forecast.simpleforecast.forecastday[index].low.fahrenheit,
-            conditions : result.forecast.simpleforecast.forecastday[index].conditions,
-            rainChance : result.forecast.simpleforecast.forecastday[index].pop,
-            conditionUrl : getConditionIconUrl(result.forecast.simpleforecast.forecastday[index].icon_url, result.forecast.simpleforecast.forecastday[index].icon)
+            day: result.forecast.simpleforecast.forecastday[index].date.weekday,
+            hiTemp: result.forecast.simpleforecast.forecastday[index].high.fahrenheit,
+            loTemp: result.forecast.simpleforecast.forecastday[index].low.fahrenheit,
+            conditions: result.forecast.simpleforecast.forecastday[index].conditions,
+            rainChance: result.forecast.simpleforecast.forecastday[index].pop,
+            conditionUrl: getConditionIconUrl(result.forecast.simpleforecast.forecastday[index].icon_url, result.forecast.simpleforecast.forecastday[index].icon)
         });
     }
 
-    function getConditionIconUrl(startIconUrl, icon)
-    {
+    function getConditionIconUrl(startIconUrl, icon) {
         //http://icons.wxug.com/i/c/v4/clear.svg
         var showNight = startIconUrl.includes("nt_");
 
-        var finalUrlIcon  = 'https://icons.wxug.com/i/c/v3/';
+        var finalUrlIcon = 'https://icons.wxug.com/i/c/v3/';
 
-        if(showNight) {
+        if (showNight) {
             finalUrlIcon = finalUrlIcon + 'nt_';
         }
 
@@ -87,8 +86,6 @@ $(document).ready(function () {
     function refreshWeatherData() {
         getWeatherData().done(function (result) {
             console.log('got weather data');
-
-
 
             //"http://icons.wxug.com/i/c/k/nt_partlycloudy.gif
 
@@ -112,7 +109,8 @@ $(document).ready(function () {
 
             loadDailyForecast(result);
 
-            loadRadarMap();
+            // loadRadarMap();
+            refreshRadar();
 
             window.setTimeout(refreshWeatherData, 600000);
 

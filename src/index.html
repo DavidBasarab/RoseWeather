@@ -21,6 +21,7 @@
 		<script type="text/javascript" src="//cdn.aerisjs.com/aeris-interactive/aim-gmaps.js"></script>
 		<script type="text/javascript" src="radarMap.js"></script>
 		<script src="http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
+		<script type="text/javascript" src="googleRadar.js"></script>
 	</head>
 	<body>
 		<script id="dailyWeatherTemplate" type="text/x-jQuery-tmpl">
@@ -53,8 +54,6 @@
 					</div>
 				</div>
 			</div>
-
-
 		</script>
 		<div id="outer">
 			<div id="inner_fixed">
@@ -105,7 +104,9 @@
 				<div class="row fill">
 					<div class="col-xs-6 fill" style="background-color: greenyellow">
 						<div class="img-container">
-							<div id="map-canvas"></div>
+							<!--<div id="map-canvas"></div>-->
+							<img id="overlay" class="top radarImage" src="" alt="">
+							<img id="map"  class="bottom radarImage" src="" alt="">
 						</div>
 					</div>
 					<div class="col-xs-6 fill" style="background-color: hotpink">
