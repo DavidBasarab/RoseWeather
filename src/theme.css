@@ -51,6 +51,10 @@ label {
     width: 50px;
 }
 
+#currentConditions {
+    font-size: 3vw;
+}
+
 #conditions {
     font-size: 4.5vw;
 }
