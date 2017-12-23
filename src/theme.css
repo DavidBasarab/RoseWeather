@@ -20,7 +20,7 @@ div {
 }
 
 #inner_remaining {
-    background-color: #DDDDDD;
+    background-color: black;
     display: table-row;
 }
 
@@ -102,6 +102,7 @@ label {
 
 .img-container {
     position: relative;
+
 }
 
 .imageRadar {
@@ -125,4 +126,5 @@ label {
     width: 95%;
     height: 95%;
     margin-left: 10px;
+    border-radius: 25px;
 }
