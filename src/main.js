@@ -101,15 +101,44 @@ $(document).ready(function () {
 
     $('#highSpeedInfo').hide();
 
+    var loop = false;
+
+    function stopRadarLoop() {
+        loop = false;
+    }
+
+    function startRefreshLoop() {
+        loop = true;
+
+        loadRadarMap();
+
+        radarRefreshLoop();
+    }
+
+    function radarRefreshLoop() {
+        if (loop) {
+            console.log('radarRefreshLoop');
+
+            window.setTimeout(function() {
+                loadRadarMap();
+
+                radarRefreshLoop();
+            }, 60000);
+        }
+    }
+
     $('#normalInfo').click(function () {
         $('#highSpeedInfo').show();
         $('#normalInfo').hide();
+
+        startRefreshLoop();
     });
 
     $('#highSpeedInfo').click(function () {
         $('#highSpeedInfo').hide();
         $('#normalInfo').show();
 
+        stopRadarLoop();
         refreshWeatherData(true);
     });
 

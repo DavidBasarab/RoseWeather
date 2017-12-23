@@ -37,27 +37,23 @@ function loadRadarMap() {
 // Create the animation
 // See https://github.com/aerisweather/aerisjs/blob/master/examples/animations/sync.html
 // for a more complete usage demonstration
-//     var animation = new aeris.maps.animations.AnimationSync([
-//         radar,
-//         alerts
-//     ], {
-//         from: Date.now() - 1000 * 60 * 60 * .25,    // 2 hours ago
-//         to: Date.now()
-//     });
+    var animation = new aeris.maps.animations.AnimationSync([
+        radar
+    ], {
+        from: Date.now() - 1000 * 60 * 60 * 2,    // 2 hours ago
+        to: Date.now()
+    });
 
-// Display the current time of the animation
-// A 'change:times' event is triggered
-// with a date object corresponding to the
-// current animation frame.
-// animation.on('change:time', function(date) {
-//     // Update the hh:mm display
-//     var formattedTime = date.toTimeString().replace(/.*(\d{2}:\d{2})(:\d{2}).*/, "$1");
-//     $('#currentTime').text(formattedTime);
-//     // Update the position of the time range input
-//     $('#time').val(date.getTime());
-// });
+    animation.on('change:time', function (date) {
+        // Update the hh:mm display
+        var formattedTime = date.toTimeString().replace(/.*(\d{2}:\d{2})(:\d{2}).*/, "$1");
+        $('#currentTime').text(formattedTime);
+        // Update the position of the time range input
+        $('#time').val(date.getTime());
+    });
 
-// Start the animation
-//     animation.start();
+    animation.start();
 }
+
+
 
