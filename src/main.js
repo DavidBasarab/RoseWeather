@@ -106,7 +106,7 @@ $(document).ready(function () {
     function stopRadarLoop() {
 
         console.log('stopping radar loop');
-        
+
         loop = false;
     }
 
@@ -119,12 +119,15 @@ $(document).ready(function () {
     }
 
     function radarRefreshLoop() {
-        if (loop) {
+        if (loop == true) {
             console.log('radarRefreshLoop');
 
             window.setTimeout(function() {
-                loadRadarMap();
+                if (loop == false) {
+                    return;
+                }
 
+                 loadRadarMap();
                 radarRefreshLoop();
             }, 60000);
         }
