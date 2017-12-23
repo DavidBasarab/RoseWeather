@@ -19,32 +19,7 @@ $(document).ready(function () {
     }
 
     function loadDailyForecast(result) {
-        var dayArray = [
-            // {
-            //     day : "Monday",
-            //     hiTemp : 65,
-            //     loTemp : 21,
-            //     conditions : 'Sunny',
-            //     rainChance : 0,
-            //     conditionUrl : 'http://icons.wxug.com/i/c/v3/cloudy.svg'
-            // },
-            // {
-            //     day : "Tuesday",
-            //     hiTemp : 32,
-            //     loTemp : 5,
-            //     conditions : 'Snowy',
-            //     rainChance : 95,
-            //     conditionUrl : 'http://icons.wxug.com/i/c/v3/nt_cloudy.svg'
-            // },
-            // {
-            //     day : "Wednesday",
-            //     hiTemp : 43,
-            //     loTemp : 40,
-            //     conditions : 'Cloudy',
-            //     rainChance : 50,
-            //     conditionUrl : 'http://icons.wxug.com/i/c/v3/cloudy.svg'
-            // }
-        ];
+        var dayArray = [];
 
         addDailyForecast(dayArray, result, 1);
         addDailyForecast(dayArray, result, 2);
@@ -83,7 +58,7 @@ $(document).ready(function () {
         return finalUrlIcon;
     }
 
-    function refreshWeatherData() {
+    function refreshWeatherData(doNotScheduleUpdate) {
         getWeatherData().done(function (result) {
             console.log('got weather data');
 
@@ -112,13 +87,30 @@ $(document).ready(function () {
             // loadRadarMap();
             refreshRadar();
 
-            window.setTimeout(refreshWeatherData, 600000);
+            if (doNotScheduleUpdate == null) {
+                console.log('Scheduling Timeout');
 
+                window.setTimeout(refreshWeatherData, 600000);
+            }
         }).fail(function (result) {
             console.log('Error: ' + result.responseText);
         });
     }
 
     refreshWeatherData();
+
+    $('#highSpeedInfo').hide();
+
+    $('#normalInfo').click(function () {
+        $('#highSpeedInfo').show();
+        $('#normalInfo').hide();
+    });
+
+    $('#highSpeedInfo').click(function () {
+        $('#highSpeedInfo').hide();
+        $('#normalInfo').show();
+
+        refreshWeatherData(true);
+    });
 
 });

@@ -128,3 +128,8 @@ label {
     margin-left: 10px;
     border-radius: 25px;
 }
+
+.highSpeedInfo {
+    width: 93%;
+    height: 93%;
+}
