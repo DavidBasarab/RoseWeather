@@ -15,14 +15,14 @@ div {
 
 #inner_fixed {
     height: 6px;
-    background-color: #fbb1e9;
-    color: #24063d;
+    background-color: #9c3693;
+    color: white;
     display: table-row;
 }
 
 #inner_remaining {
-    background-color: #fbb1e9;
-    color: #24063d;
+    background-color: #9c3693;
+    color: white;
     display: table-row;
 }
 
