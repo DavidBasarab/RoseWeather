@@ -101,17 +101,15 @@ $(document).ready(function () {
 
     $('#highSpeedInfo').hide();
 
-    var loop = false;
+    var loopCount = 0;
 
     function stopRadarLoop() {
 
-        console.log('stopping radar loop');
-
-        loop = false;
+        loopCount = 99;
     }
 
     function startRefreshLoop() {
-        loop = true;
+        loopCount = 0;
 
         loadRadarMap();
 
@@ -119,17 +117,23 @@ $(document).ready(function () {
     }
 
     function radarRefreshLoop() {
-        if (loop == true) {
-            console.log('radarRefreshLoop');
+        if (loopCount < 5) {
+            loopCount++;
+
+            console.log('radarRefreshLoop := ' + loopCount);
 
             window.setTimeout(function() {
-                if (loop == false) {
+                if (loopCount > 5) {
+                    showNormalInfo();
+
                     return;
                 }
 
                  loadRadarMap();
                 radarRefreshLoop();
             }, 60000);
+        } else {
+            showNormalInfo();
         }
     }
 
@@ -141,11 +145,15 @@ $(document).ready(function () {
     });
 
     $('#highSpeedInfo').click(function () {
+        showNormalInfo();
+    });
+
+    function showNormalInfo() {
         $('#highSpeedInfo').hide();
         $('#normalInfo').show();
 
         stopRadarLoop();
         refreshWeatherData(true);
-    });
+    }
 
 });
