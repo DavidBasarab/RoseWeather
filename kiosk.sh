@@ -12,14 +12,3 @@ sed -i 's/"exit_type":"Crashed"/"exit_type":"Normal"/' /home/pi/.config/chromium
 
 # Run Chromium and open tabs
 /usr/bin/chromium-browser --window-size=480,320 --kiosk --window-position=0,0 http://localhost &
-
-# Start the kiosk loop. This keystroke changes the Chromium tab
-# To have just anti-idle, use this line instead:
-# xdotool keydown ctrl; xdotool keyup ctrl;
-# Otherwise, the ctrl+Tab is designed to switch tabs in Chrome
-# #
-while (true)
- do
-  xdotool keydown ctrl+Tab; xdotool keyup ctrl+Tab;
-  sleep 15
-done
