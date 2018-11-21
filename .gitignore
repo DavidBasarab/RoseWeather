@@ -100,3 +100,7 @@ ENV/
 
 # mypy
 .mypy_cache/
+/RoseWeather/RoseWeather/AppPackages/*
+/RoseWeather/.vs/*
+/RoseWeather/RoseWeather/bin/*
+/RoseWeather/RoseWeather/obj/*
