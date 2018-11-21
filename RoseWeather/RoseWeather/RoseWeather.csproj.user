@@ -26,5 +26,7 @@
     <AppxShowAllApps>False</AppxShowAllApps>
     <AppxBuildConfigurationSelection>x86|x64|arm</AppxBuildConfigurationSelection>
     <PackageOptionalProjectsInIdeBuilds>True</PackageOptionalProjectsInIdeBuilds>
+    <RemoteMachine0>RoseWeather</RemoteMachine0>
+    <UseAuthentication0>False</UseAuthentication0>
   </PropertyGroup>
 </Project>

@@ -1,2 +1,2 @@
-MainPackage=F:\Code\RoseWeather\RoseWeather\RoseWeather\bin\x64\Release\RoseWeather_1.0.0.0_x64.appx
-SymbolPackage=F:\Code\RoseWeather\RoseWeather\RoseWeather\AppPackages\RoseWeather_1.0.0.0_Test\RoseWeather_1.0.0.0_x64.appxsym
+MainPackage=F:\Code\RoseWeather\RoseWeather\RoseWeather\bin\x64\Release\RoseWeather_1.0.1.0_x64.appx
+SymbolPackage=F:\Code\RoseWeather\RoseWeather\RoseWeather\AppPackages\RoseWeather_1.0.1.0_Test\RoseWeather_1.0.1.0_x64.appxsym

@@ -12,7 +12,6 @@
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0">Hello WORLD!!!!!!!!</TextBlock>
-        <Button Grid.Row="1">Press Me</Button>
+        <TextBlock Grid.Row="0">LETS GO TEAM I want to see if I can update</TextBlock>
     </Grid>
 </Page>
