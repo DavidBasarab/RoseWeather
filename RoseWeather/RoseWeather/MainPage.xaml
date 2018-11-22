@@ -5,6 +5,7 @@
     xmlns:local="using:RoseWeather"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:maps="using:Windows.UI.Xaml.Controls.Maps"
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -13,5 +14,17 @@
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="0">LETS GO TEAM I want to see if I can update</TextBlock>
+        <maps:MapControl Grid.Row="1" MapServiceToken="abLf2JT0p4NLJz0V1heo~hXqfKh5irUU9MLCt3nxuLw~Av-VFcrrdRavTR2tEFXC0oiaOSo-CwdUc2V7rdGb6_0Y05y_tN25XCDqASPX2usk"
+                         ></maps:MapControl>
+        <!--<StackPanel Grid.Row="1" HorizontalAlignment="Stretch"
+                    Margin="8,8,8,8" VerticalAlignment="Stretch" >
+            <TextBlock TextWrapping="NoWrap" Text="Map control"
+                       FontSize="36" Margin="8,0,0,16"/>
+            <maps:MapControl
+                x:Name="MapControl1"
+                MapServiceToken="kiFJufqy5nuE7sRh7ojpSz5EpL2zEHIHiFJryHdayJeiVDJ-x3DescRvsqLVDe "
+                Height="560"
+                Margin="0,0,0,0" />
+        </StackPanel>-->
     </Grid>
 </Page>
